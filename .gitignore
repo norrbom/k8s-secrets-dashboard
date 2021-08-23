@@ -1,0 +1,7 @@
+provider.tf
+*.tfstate
+*.tfstate.*
+*.lock.hcl
+.terraform
+data/index.html
+.DS_Store

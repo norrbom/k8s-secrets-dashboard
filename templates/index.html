@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+               border-collapse: collapse;
+               border-spacing: 0;
+               width: 100%;
+            }
+            th, td {
+               font-family: Arial;
+               font-size: 14px;
+               text-align: left;
+               padding: 6px;
+               border: 1pt solid #ddd;
+            }
+            td.sectionend {
+              border-right: 2pt solid #aaa;
+            }
+            tr {
+              border-bottom: 1pt solid #ddd;
+            }
+            tr.completed td, tr.completed th{
+              background-color:#efe;
+            }
+            tr.in-progress td, tr.in-progress th{
+              background-color:#ffe;
+            }
+            tr.not-started td, tr.not-started th{
+              background-color:#fee;
+            }
+            body {font-family: Arial;}
+
+            /* Style the progress bars */
+            progress {
+              display: block; /* default: inline-block */
+              padding: 1px;
+              border: 0 none;
+              background: #eee;
+              border-radius: 3px;
+            }
+            /* webkit - progress bars */
+            @media screen and (-webkit-min-device-pixel-ratio:0) {
+              progress {
+                height: 10px;
+                width: 30%;
+              }
+            }
+            progress::-webkit-progress-bar {
+                background: transparent;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset;
+            }
+            .progressbar-t::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(200, 200, 200);
+            }
+            .progressbar-c::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(60, 230, 60);
+            }
+            .progressbar-i::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(240, 180, 0);
+            }
+            .progressbar-n::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(240, 60, 60);
+            }
+
+            /* Style the tab */
+            .tab {
+              order: 2;
+              overflow: hidden;
+              border: 1px solid #ddd;
+              background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 16px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+              background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+              background-color: #ddd;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+              order: 3;
+              display: none;
+              padding: 10px 10px;
+              border: 1px solid #ddd;
+            }
+            #wrapper {
+              display: flex;
+              flex-direction: column;
+            }
+            .top {
+              order: 1;
+            }
+            .row{
+              clear:both
+            }
+            .column{
+              width: 33%;
+              float: left;
+            }
+            /* fake links */
+            .sortable th {
+                cursor:pointer;
+                text-decoration:underline;
+            }
+         </style>
+    </head>
+<body>
+<h1>Services on Zero Config</h1>
+<div id="wrapper">
+  <div class="second tab">
+      {{range $env, $data := .}}
+      <button id="tab-{{$env}}" class="tablinks" onclick="swapTabs(event, '{{$env}}')">{{$env}}</button>
+      {{end}}
+  </div>
+  {{range $env, $data := .}}
+  <div id="{{$env}}" class="third tabcontent">
+    <table id="table-{{$env}}" style="width:100%">
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+          <th colspan="5">Vault</th>
+          <th colspan="5">SealedSecrets (classification is best effort due to missing naming standard)</th>
+        </tr>
+        <tr class="sortable">
+          <th>Service</th>
+          <th></th>
+          <th>Status</th>
+          <th data-tsorter="numeric">Oracle</th>
+          <th data-tsorter="numeric">Solace</th>
+          <th data-tsorter="numeric">InfluxDB</th>
+          <th data-tsorter="numeric">MySQL</th>
+          <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Datasource</th>
+          <th data-tsorter="numeric">Solace</th>
+          <th data-tsorter="numeric">InfluxDB</th>
+          <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Other</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range $namespace, $row := $data.Report }}
+        <tr class="{{$row.Progress}}">
+          <td>{{$namespace}}</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/{{$env}}/browse/{{$namespace}}">GitOps</a></td>
+          <td>
+            {{$row.Progress}}
+          </td>
+          <td>{{ len $row.VaultOracle }}</td>
+          <td>{{ len $row.VaultSolace }}</td>
+          <td>{{ len $row.VaultInfluxDB }}</td>
+          <td>{{ len $row.VaultMySQL }}</td>
+          <td class="section-end">{{ len $row.VaultCouchbase }}</td>
+          <td>{{ len $row.SealedSecretDatasource }}</td>
+          <td>{{ len $row.SealedSecretSolace }}</td>
+          <td>{{ len $row.SealedSecretInfluxDB }}</td>
+          <td>{{ len $row.SealedSecretCouchbase }}</td>
+          <td>{{ len $row.Unknown }}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+  <div id="top-{{$env}}" class="top tabcontent">
+    <label for="{{$env}}_progress_t">in scope:</label>
+    {{$data.CountInScope}}
+    <progress class="progressbar-t" id="{{$env}}_progress_t" max="{{$data.CountInScope}}" value="{{$data.CountInScope}}"></progress>
+
+    <label for="{{$env}}_progress_c">completed:</label>
+    {{$data.CountCompleted}}
+    <progress class="progressbar-c" id="{{$env}}_progress_c" max="{{$data.CountInScope}}" value="{{$data.CountCompleted}}"></progress>
+
+    <label for="{{$env}}_progress_i">in progress:</label>
+    {{$data.CountInProgress}}
+    <progress class="progressbar-i" id={{$env}}_progress_i" max="{{$data.CountInScope}}" value="{{$data.CountInProgress}}"></progress>
+
+    <label for="{{$env}}_progress_n">not started:</label>
+    {{$data.CountNotStarted}}
+    <progress class="progressbar-n" id="{{$env}}_progress_n" max="{{$data.CountInScope}}" value="{{$data.CountNotStarted}}"></progress>
+  </div>
+  {{end}}
+</div>
+  <script>
+    function init(){
+      doSwap(document.getElementById("tab-PROD1"), 'PROD1');
+      // table sort
+      {{range $env, $report := .}}
+      var sorter{{$env}} = tsorter.create('table-{{$env}}', null, {
+            'image-number': function(row){  
+                return parseFloat( this.getCell(row).childNodes[1].nodeValue, 10 );
+            }
+        });
+    {{end}}
+    }
+    function swapTabs(evt, env) {
+      doSwap(evt.currentTarget, env);
+    }
+    function doSwap(obj, env) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(env).style.display = "block";
+      document.getElementById('top-'+env).style.display = "block";
+      obj.className += " active";
+    }
+    
+    window.onload = init;
+    </script>
+    <script src="./tsorter.js" type="text/javascript"></script>
+</body>
+</html>

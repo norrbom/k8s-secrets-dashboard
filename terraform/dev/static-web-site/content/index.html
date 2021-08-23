@@ -1,0 +1,5331 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+               border-collapse: collapse;
+               border-spacing: 0;
+               width: 100%;
+            }
+            th, td {
+               font-family: Arial;
+               font-size: 14px;
+               text-align: left;
+               padding: 6px;
+               border: 1pt solid #ddd;
+            }
+            td.sectionend {
+              border-right: 2pt solid #aaa;
+            }
+            tr {
+              border-bottom: 1pt solid #ddd;
+            }
+            tr.completed td, tr.completed th{
+              background-color:#efe;
+            }
+            tr.in-progress td, tr.in-progress th{
+              background-color:#ffe;
+            }
+            tr.not-started td, tr.not-started th{
+              background-color:#fee;
+            }
+            body {font-family: Arial;}
+
+            /* Style the progress bars */
+            progress {
+              display: block; /* default: inline-block */
+              padding: 1px;
+              border: 0 none;
+              background: #eee;
+              border-radius: 3px;
+            }
+            /* webkit - progress bars */
+            @media screen and (-webkit-min-device-pixel-ratio:0) {
+              progress {
+                height: 10px;
+                width: 30%;
+              }
+            }
+            progress::-webkit-progress-bar {
+                background: transparent;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset;
+            }
+            .progressbar-t::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(200, 200, 200);
+            }
+            .progressbar-c::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(60, 230, 60);
+            }
+            .progressbar-i::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(240, 180, 0);
+            }
+            .progressbar-n::-webkit-progress-value {  
+              border-radius: 3px;
+              background: rgb(240, 60, 60);
+            }
+
+            /* Style the tab */
+            .tab {
+              order: 2;
+              overflow: hidden;
+              border: 1px solid #ddd;
+              background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 16px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+              background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+              background-color: #ddd;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+              order: 3;
+              display: none;
+              padding: 10px 10px;
+              border: 1px solid #ddd;
+            }
+            #wrapper {
+              display: flex;
+              flex-direction: column;
+            }
+            .top {
+              order: 1;
+            }
+            .row{
+              clear:both
+            }
+            .column{
+              width: 33%;
+              float: left;
+            }
+            /* fake links */
+            .sortable th {
+                cursor:pointer;
+                text-decoration:underline;
+            }
+         </style>
+    </head>
+<body>
+<h1>Services on Zero Config</h1>
+<div id="wrapper">
+  <div class="second tab">
+      
+      <button id="tab-PROD1" class="tablinks" onclick="swapTabs(event, 'PROD1')">PROD1</button>
+      
+  </div>
+  
+  <div id="PROD1" class="third tabcontent">
+    <table id="table-PROD1" style="width:100%">
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+          <th colspan="5">Vault</th>
+          <th colspan="5">SealedSecrets (classification is best effort due to missing naming standard)</th>
+        </tr>
+        <tr class="sortable">
+          <th>Service</th>
+          <th></th>
+          <th>Status</th>
+          <th data-tsorter="numeric">Oracle</th>
+          <th data-tsorter="numeric">Solace</th>
+          <th data-tsorter="numeric">InfluxDB</th>
+          <th data-tsorter="numeric">MySQL</th>
+          <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Datasource</th>
+          <th data-tsorter="numeric">Solace</th>
+          <th data-tsorter="numeric">InfluxDB</th>
+          <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Other</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="not-started">
+          <td>32redgateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/32redgateway">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>aams-console</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/aams-console">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>accounting-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/accounting-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>active-days</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/active-days">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>affiliate-audit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/affiliate-audit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>affiliate-comms</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/affiliate-comms">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>affiliate-comms-web</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/affiliate-comms-web">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>affiliate-erasure</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/affiliate-erasure">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>affiliates-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/affiliates-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>airdice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/airdice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>als-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/als-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>aml-customer-profile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/aml-customer-profile">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>aml-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/aml-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>api-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/api-gateway">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>audience-campaign-feeder</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/audience-campaign-feeder">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>audience-selection-profile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/audience-selection-profile">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>audit-log</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/audit-log">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>auth-history</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/auth-history">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>authentication-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/authentication-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>az</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/az">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>bacs</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bacs">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="">
+          <td>bacs-ui</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bacs-ui">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>balance-limit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/balance-limit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>bankid-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bankid-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bdstadia-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bdstadia-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>be-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/be-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>betradar-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/betradar-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>bisnode-no-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bisnode-no-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>bisnode-se-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bisnode-se-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>blimp-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/blimp-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>block-admin</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/block-admin">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>boat-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/boat-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bonuskbc</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bonuskbc">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bonusoffer-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bonusoffer-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bonuspayout-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bonuspayout-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bonusprogression-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bonusprogression-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>bonuswidget-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bonuswidget-boot">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>bundle-registry</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/bundle-registry">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>campaign-association</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaign-association">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>campaign-orchestrator</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaign-orchestrator">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>campaign-scheduler</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaign-scheduler">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>campaign-send-out-executor</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaign-send-out-executor">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>6</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>campaign-send-out-snapshot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaign-send-out-snapshot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>campaignwidget-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/campaignwidget-boot">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>captcha-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/captcha-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>68</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>cas</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cas">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cashback</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cashback">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-credorax</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-credorax">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-masterfile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-masterfile">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-paypal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-paypal">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-payvision</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-payvision">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-swedbank</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-swedbank">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cbp-worldpay</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cbp-worldpay">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>cddn-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cddn-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>chargeback-api</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/chargeback-api">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="">
+          <td>cinder-csi</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cinder-csi">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>client-token-helper</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/client-token-helper">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>clixel</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/clixel">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>cma</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cma">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>communicationsarchive</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/communicationsarchive">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>communicationsarchive-backoffice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/communicationsarchive-backoffice">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>communicationsgateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/communicationsgateway">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>communicationsprofile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/communicationsprofile">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>consent</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/consent">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>criipto-identification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/criipto-identification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>cs-unica-adapter</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cs-unica-adapter">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>csoperationfeed</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/csoperationfeed">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>cup</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/cup">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>curity-ims</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/curity-ims">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>9</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>currencymap</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/currencymap">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>currencymapwidget</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/currencymapwidget">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>custard-customer</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/custard-customer">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>customer-classifications</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customer-classifications">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>customer-lookup</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customer-lookup">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>customer-search-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customer-search-service">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>customer-todo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customer-todo">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>customer-verification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customer-verification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>customerfavouritesb</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/customerfavouritesb">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>de-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/de-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>deeplink</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/deeplink">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>delogger</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/delogger">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>deposit-limit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/deposit-limit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>deposit-tracker</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/deposit-tracker">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>diogenes</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/diogenes">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>21</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>dk-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/dk-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>document-serving</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/document-serving">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>document-upload</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/document-upload">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>dow-jones-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/dow-jones-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="">
+          <td>dynamic-renderer</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/dynamic-renderer">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>ee-eaks-reporting</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ee-eaks-reporting">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>ee-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ee-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>erasure-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/erasure-service">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>event-logger</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/event-logger">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>eventbus-metrics</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/eventbus-metrics">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>evolution</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/evolution">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>4</td>
+          <td>1</td>
+          <td>1</td>
+          <td>29</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>exalogic</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/exalogic">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="">
+          <td>external-resource-operator</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/external-resource-operator">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>externalrewards</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/externalrewards">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>feeds-gateway-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/feeds-gateway-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>feeds-publisher-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/feeds-publisher-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>feeservice-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/feeservice-boot">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>freespinstemplate-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/freespinstemplate-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>fundingcomponent-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/fundingcomponent-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>game-token-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/game-token-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>gamelistservice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/gamelistservice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>gamestorage-collector</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/gamestorage-collector">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>gamestorage-feeder</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/gamestorage-feeder">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>gamingpersonalisation</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/gamingpersonalisation">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>gordium-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/gordium-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>3</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>greenid-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/greenid-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>greentube</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/greentube">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>guldbron</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/guldbron">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>hermes</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/hermes">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>id3-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/id3-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>idin-identification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/idin-identification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>idnow-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/idnow-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>igt</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/igt">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>iovation-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/iovation-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>iris</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/iris">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>26</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>it-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/it-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>italian-lookup</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/italian-lookup">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>itsme-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/itsme-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>kambi-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kambi-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>3</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>kambi-datafeed-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kambi-datafeed-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="">
+          <td>kindred-logging</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kindred-logging">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>kindred-match-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kindred-match-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>kubernetes-endpoint-exporter</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kubernetes-endpoint-exporter">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>kyc-engine</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kyc-engine">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>2</td>
+          <td>5</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>kyc-public</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kyc-public">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>kyc-ui</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/kyc-ui">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>las</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/las">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>livecasinoservice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/livecasinoservice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>livemonitoring</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/livemonitoring">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>login-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/login-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>low-balance</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/low-balance">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>loyalty-api</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/loyalty-api">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>loyalty-backoffice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/loyalty-backoffice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>loyalty-consumer</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/loyalty-consumer">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>market-wide-selector</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/market-wide-selector">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>marketing-compliance</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/marketing-compliance">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>marketing-compliance-profile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/marketing-compliance-profile">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>marketing-msg-collector</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/marketing-msg-collector">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>microgaming</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/microgaming">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>8</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>mirt-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/mirt-boot">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>4</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>moneyman-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/moneyman-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>nemid-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/nemid-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>netent</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/netent">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>36</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>notificationcentre</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/notificationcentre">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>nt-audit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/nt-audit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>nyx</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/nyx">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>7</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>ofs</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ofs">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>onsitemessaging</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/onsitemessaging">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="">
+          <td>onsitemessaging-bo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/onsitemessaging-bo">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="">
+          <td>opa-gatekeeper</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/opa-gatekeeper">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>orval-core</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/orval-core">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>orval-web</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/orval-web">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>oryx</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/oryx">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>10</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>otp-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/otp-service">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>password-mng</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/password-mng">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-adyen-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-adyen-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>6</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-apple-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-apple-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-applepay-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-applepay-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-autopayout-router</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-autopayout-router">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-bootstrap</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-bootstrap">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-card-info</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-card-info">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-clearsettle-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-clearsettle-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>42</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-closed-loop</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-closed-loop">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-common</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-common">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-customer-profile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-customer-profile">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-earthport-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-earthport-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-earthport-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-earthport-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-ecopayz-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-ecopayz-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-ecopayz-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-ecopayz-withdrawal">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-emp-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-emp-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>21</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-hexopay-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-hexopay-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-hexopay-offline</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-hexopay-offline">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-hexopay-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-hexopay-withdrawal">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-hipay</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-hipay">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-internal-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-internal-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-internal-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-internal-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-jeton-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-jeton-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-launcher</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-launcher">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-manual-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-manual-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-manualbank-bo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-manualbank-bo">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-methods</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-methods">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-mobilepay-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-mobilepay-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>9</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-muchbetter-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-muchbetter-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-muchbetter-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-muchbetter-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-neteller-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-neteller-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>8</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-neteller-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-neteller-withdrawal">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>7</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-omnimatrix</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-omnimatrix">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>12</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>pay-payment-account</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-payment-account">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>pay-payment-history</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-payment-history">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-paymentiq-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-paymentiq-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-paypal-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-paypal-deposit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>14</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-paypal-withdraw</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-paypal-withdraw">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>14</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-paysafecard</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-paysafecard">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-poli</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-poli">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-skrill</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-skrill">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>19</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-skrill-withdraw</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-skrill-withdraw">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>17</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-swish-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-swish-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>17</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-swish-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-swish-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>32</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-transactionsearch-bo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-transactionsearch-bo">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-trustly-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-trustly-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>13</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-trustly-pnp</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-trustly-pnp">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>12</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pay-trustly-proxy</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-trustly-proxy">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>13</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-trustly-withdrawal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-trustly-withdrawal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>13</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pay-worldpayap-deposit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pay-worldpayap-deposit">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>paymentscheduler-bo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/paymentscheduler-bo">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>payout</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/payout">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>platform-verifier</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/platform-verifier">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>playngo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/playngo">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>8</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>playngo-datafeed-api</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/playngo-datafeed-api">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>playtech</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/playtech">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>pragmatic</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pragmatic">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>promotion-launcher-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/promotion-launcher-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>pseds</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/pseds">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>ptslim</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ptslim">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>rbl-ui</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rbl-ui">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>realisticgames</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/realisticgames">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>realitycheck</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/realitycheck">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>recommendationservice-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/recommendationservice-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>recurring-block-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/recurring-block-service">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>redtiger</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/redtiger">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>regily-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/regily-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>registration-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/registration-service">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>regulatory-engine</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/regulatory-engine">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>relaxbingo</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/relaxbingo">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>relaxgaming</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/relaxgaming">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>5</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>request-authority</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/request-authority">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>responsible-gaming</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/responsible-gaming">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rewardengine</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rewardengine">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rewardsgateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rewardsgateway">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rewardsjournal</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rewardsjournal">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>rg-deposit-limit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rg-deposit-limit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rg-intervention-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rg-intervention-service">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>roundy</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/roundy">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rteventprocessor</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rteventprocessor">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>rudolph</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/rudolph">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>safe</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/safe">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>saplus</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/saplus">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="">
+          <td>saplus-ui</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/saplus-ui">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>sb-recommendations-v3-betoffer</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sb-recommendations-v3-betoffer">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>se-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/se-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>segmentation-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/segmentation-service">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>self-exclusion</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/self-exclusion">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>self-verification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/self-verification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>session-limits</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/session-limits">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>session-tracking</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/session-tracking">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>shortly</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/shortly">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>spending-limit</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/spending-limit">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>sportsbook-bet-stats</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sportsbook-bet-stats">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>sportsbook-draw-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sportsbook-draw-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>2</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>sportsbook-feeds-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sportsbook-feeds-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>sportsbook-frontend</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sportsbook-frontend">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>sportsbook-notifications-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/sportsbook-notifications-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>stakelogic-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/stakelogic-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>9</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>tealium-integration-service</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tealium-integration-service">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>test-accounts-adapter</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/test-accounts-adapter">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>thunderkick</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/thunderkick">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>tournamenttool-api</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tournamenttool-api">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>tournamenttool-backoffice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tournamenttool-backoffice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>tournamenttool-engine</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tournamenttool-engine">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>transactionsummaryservice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/transactionsummaryservice">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>translation-tool</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/translation-tool">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>transunion-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/transunion-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>trulioogateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/trulioogateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>ts-admin-tools</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ts-admin-tools">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>ts-master-config</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ts-master-config">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>tupas-identification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tupas-identification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>twitter-widget-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/twitter-widget-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>tx-engine</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/tx-engine">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>ugracing-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/ugracing-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>3</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>uk-gateway</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/uk-gateway">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>usermessaging2</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/usermessaging2">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>usermessagingapi</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/usermessagingapi">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="">
+          <td>vip-backoffice</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/vip-backoffice">GitOps</a></td>
+          <td>
+            
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>vip-customer-profile</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/vip-customer-profile">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="in-progress">
+          <td>wallet-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/wallet-boot">GitOps</a></td>
+          <td>
+            in-progress
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>wallitt-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/wallitt-boot">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>xns-api-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/xns-api-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>xnsservice-boot</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/xnsservice-boot">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        
+        <tr class="not-started">
+          <td>yggdrasil</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/yggdrasil">GitOps</a></td>
+          <td>
+            not-started
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>1</td>
+          <td>4</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr class="completed">
+          <td>zignsec-identification</td>
+          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/PROD1/browse/zignsec-identification">GitOps</a></td>
+          <td>
+            completed
+          </td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td class="section-end">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div id="top-PROD1" class="top tabcontent">
+    <label for="PROD1_progress_t">in scope:</label>
+    267
+    <progress class="progressbar-t" id="PROD1_progress_t" max="267" value="267"></progress>
+
+    <label for="PROD1_progress_c">completed:</label>
+    116
+    <progress class="progressbar-c" id="PROD1_progress_c" max="267" value="116"></progress>
+
+    <label for="PROD1_progress_i">in progress:</label>
+    22
+    <progress class="progressbar-i" id=PROD1_progress_i" max="267" value="22"></progress>
+
+    <label for="PROD1_progress_n">not started:</label>
+    129
+    <progress class="progressbar-n" id="PROD1_progress_n" max="267" value="129"></progress>
+  </div>
+  
+</div>
+  <script>
+    function init(){
+      doSwap(document.getElementById("tab-PROD1"), 'PROD1');
+      // table sort
+      
+      var sorterPROD1 = tsorter.create('table-PROD1', null, {
+            'image-number': function(row){  
+                return parseFloat( this.getCell(row).childNodes[1].nodeValue, 10 );
+            }
+        });
+    
+    }
+    function swapTabs(evt, env) {
+      doSwap(evt.currentTarget, env);
+    }
+    function doSwap(obj, env) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(env).style.display = "block";
+      document.getElementById('top-'+env).style.display = "block";
+      obj.className += " active";
+    }
+    
+    window.onload = init;
+    </script>
+    <script src="./tsorter.js" type="text/javascript"></script>
+</body>
+</html>
