@@ -1,5 +1,5 @@
-## Zero Config Dashboard
-Page showing progress of services moving over from Sealed Secrets to Vault and Zero Config.
+## k8s Secrets Dashboard
+A dashboard showing Sealed Secrets vs Vault secrets, using naming conventions.
 
 ### Prerequisites
 
