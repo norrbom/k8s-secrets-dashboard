@@ -13,7 +13,10 @@ go run main.go report.go utils.go
 ```
 ### Docker
 ```bash
-docker build -t zcreport . && docker run -it --rm -e KUBECONFIG_SI1=/kubernetes-configuration/<KUEBCONFIG_FILE> -v $(pwd)/data:/app/data -v $(pwd)/templates:/app/templates -v <SOMEPATH>/kubernetes-configuration:/kubernetes-configuration zcreport
+docker build -t zcreport . && \
+docker run -it --rm -e KUBECONFIG_SI1=/kubernetes-configuration/<KUEBCONFIG_FILE> \
+-v $(pwd)/data:/app/data -v $(pwd)/templates:/app/templates \
+-v <SOMEPATH>/kubernetes-configuration:/kubernetes-configuration zcreport
 ```
 ### Publish to S3 DEV
 ```bash
