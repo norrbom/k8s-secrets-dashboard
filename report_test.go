@@ -91,10 +91,40 @@ func TestReportRow(t *testing.T) {
 		t.Errorf("Did not expect to find %s in reportRow.SealedSecretInfluxDB: %s", secret, report[namespace].SealedSecretInfluxDB)
 	}
 
-	namespace = "namespace00"
+	namespace = "namespace11"
 	secret = "api.password"
 	report.add(namespace, secret)
 	if _, found = Find(report[namespace].Unknown, secret); !found {
 		t.Errorf("Expected to find %s in reportRow.Unknown: %s", secret, report[namespace].Unknown)
+	}
+
+	// Test progress logic
+	namespace = "progress"
+	report.add(namespace, "api.service.aws.kindred.com")
+	if report[namespace].isInProgress() != false {
+		t.Errorf("Expected isInProgress to be false for: %s", report[namespace])
+	}
+	if report[namespace].inScope() != false {
+		t.Errorf("Expected inScope to be false for: %s", report[namespace])
+	}
+	report.add(namespace, "influx")
+	if report[namespace].inScope() != true {
+		t.Errorf("Expected inScope to be true for: %s", report[namespace])
+	}
+	report.add(namespace, "_MYSQL_PASSWORD")
+	rrInProgress := report[namespace]
+	if rrInProgress.isCompleted() != false {
+		t.Errorf("Expected isCompleted to be false for: %s", report[namespace])
+	}
+	if report[namespace].isInProgress() != true {
+		t.Errorf("Expected isInProgress to be true for: %s", report[namespace])
+	}
+	namespace = "progress2"
+	report.add(namespace, "_MYSQL_PASSWORD")
+	report.add(namespace, "_INFLUXDB_PASSWORD")
+	report.add(namespace, "api.service.aws.kindred.com")
+	rrComplete := report[namespace]
+	if rrComplete.isCompleted() != true {
+		t.Errorf("Expected isCompleted to be true for: %s", report[namespace])
 	}
 }
