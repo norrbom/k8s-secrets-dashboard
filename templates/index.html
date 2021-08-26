@@ -202,7 +202,9 @@
 </div>
   <script>
     function init(){
-      doSwap(document.getElementById("tab-PROD1"), 'PROD1');
+      {{range $env, $data := .}}
+      doSwap(document.getElementById("tab-{{$env}}"), '{{$env}}');
+      {{end}}
       // table sort
       {{range $env, $report := .}}
       var sorter{{$env}} = tsorter.create('table-{{$env}}', null, {

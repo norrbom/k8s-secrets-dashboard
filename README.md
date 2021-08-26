@@ -8,7 +8,8 @@ A dashboard showing Sealed Secrets vs Vault secrets, using naming conventions.
 
 ### Run
 ```bash
-export KUBECONFIG_SI1=<PATH_TO_KUEBCONFIG_FILE>
+export KUBECONFIG_TEST=<PATH_TO_KUEBCONFIG_FILE>
+export KUBECONFIG_PROD=<PATH_TO_KUEBCONFIG_FILE>
 go run main.go report.go utils.go
 ```
 ### Docker

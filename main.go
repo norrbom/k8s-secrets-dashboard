@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"strings"
 	"text/template"
@@ -34,9 +33,6 @@ func main() {
 	}
 
 	for env, file := range kubeconfigs {
-		fmt.Println(env)
-		fmt.Println(file)
-
 		// use the current context in kubeconfig
 		config, err := clientcmd.BuildConfigFromFlags("", file)
 		if err != nil {
@@ -61,7 +57,12 @@ func main() {
 			if s.Type == "Opaque" {
 				if len(s.Data) != 0 {
 					for secret := range s.Data {
-						report.add(s.Namespace, secret)
+						if rr, found := report[s.Namespace]; found {
+							rr.addSecret(secret)
+						} else {
+							rr := NewReportRow(env, s.Namespace, secret)
+							report[s.Namespace] = rr
+						}
 					}
 				}
 			}
@@ -72,19 +73,16 @@ func main() {
 		var CountInProgress int
 		var CountInScope int
 		var CountNotStarted int
-		for namespace, row := range report {
+		for _, row := range report {
 			CountNamespace += 1
 			if row.inScope() {
 				CountInScope++
+				row.setProgress()
 				switch {
 				case row.isCompleted():
-					report.setProgress(namespace, "completed")
 					CountCompleted++
 				case row.isInProgress():
-					report.setProgress(namespace, "in-progress")
 					CountInProgress++
-				default:
-					report.setProgress(namespace, "not-started")
 				}
 			}
 		}

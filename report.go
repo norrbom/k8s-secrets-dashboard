@@ -5,6 +5,8 @@ import (
 )
 
 type reportRow struct {
+	environment            string
+	namespace              string
 	Unknown                []string
 	VaultSolace            []string
 	VaultInfluxDB          []string
@@ -18,9 +20,20 @@ type reportRow struct {
 	Progress               string
 }
 
-type report map[string]reportRow
+/*
+factory method for reportRow, usage rr := NewReportRow("prod1", "service")
+*/
+func NewReportRow(environment string, namespace string, secret string) *reportRow {
+	rr := new(reportRow)
+	rr.environment = environment
+	rr.namespace = namespace
+	rr.addSecret(secret)
+	return rr
+}
 
-func (rr reportRow) inScope() bool {
+type report map[string]*reportRow
+
+func (rr *reportRow) inScope() bool {
 	if len(rr.SealedSecretCouchbase) > 0 || len(rr.SealedSecretDatasource) > 0 || len(rr.SealedSecretInfluxDB) > 0 || len(rr.SealedSecretSolace) > 0 ||
 		len(rr.VaultSolace) > 0 || len(rr.VaultInfluxDB) > 0 || len(rr.VaultOracle) > 0 || len(rr.VaultMySQL) > 0 || len(rr.VaultCouchbase) > 0 {
 		return true
@@ -28,7 +41,18 @@ func (rr reportRow) inScope() bool {
 	return false
 }
 
-func (rr reportRow) isInProgress() bool {
+func (rr *reportRow) setProgress() {
+	switch {
+	case (*rr).isCompleted():
+		(*rr).Progress = "completed"
+	case (*rr).isInProgress():
+		(*rr).Progress = "in-progress"
+	default:
+		(*rr).Progress = "not-started"
+	}
+}
+
+func (rr *reportRow) isInProgress() bool {
 	vault_count := len(rr.VaultInfluxDB) + len(rr.VaultMySQL) + len(rr.VaultOracle) + len(rr.VaultCouchbase) + len(rr.VaultSolace)
 	ss_count := len(rr.SealedSecretInfluxDB) + len(rr.SealedSecretDatasource) + len(rr.SealedSecretCouchbase) + len(rr.SealedSecretSolace)
 	if ss_count > 0 && vault_count > 0 {
@@ -47,7 +71,7 @@ func (rr *reportRow) isCompleted() bool {
 	return false
 }
 
-func (rr *reportRow) Add(secret string) {
+func (rr *reportRow) addSecret(secret string) {
 	switch {
 	case strings.Index(strings.ToLower(secret), "username") > -1:
 		break // we are not intrested in usernames
@@ -72,16 +96,4 @@ func (rr *reportRow) Add(secret string) {
 	default:
 		(*rr).Unknown = append((*rr).Unknown, secret)
 	}
-}
-
-func (r *report) add(namespace string, secret string) {
-	rr := (*r)[namespace]
-	rr.Add(secret)
-	(*r)[namespace] = rr
-}
-
-func (r *report) setProgress(namespace string, progress string) {
-	rr := (*r)[namespace]
-	rr.Progress = progress
-	(*r)[namespace] = rr
 }
