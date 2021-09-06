@@ -1,6 +1,9 @@
 package main
 
 import (
+	"reflect"
+	"sort"
+	"strings"
 	"testing"
 )
 
@@ -98,6 +101,21 @@ func TestReportRow(t *testing.T) {
 	if _, found = Find(report[namespace].Unknown, secret); !found {
 		t.Errorf("Expected to find %s in reportRow.Unknown: %s", secret, report[namespace].Unknown)
 	}
+
+	namespace = "namespace12"
+	secret = "curity.oauth.client-secret"
+	report[namespace] = NewReportRow(env, namespace, secret)
+	if _, found = Find(report[namespace].SealedSecretCurity, secret); !found {
+		t.Errorf("Expected to find %s in reportRow.SealedSecretCurity: %s", secret, report[namespace].SealedSecretCurity)
+	}
+
+	namespace = "namespace13"
+	secret = "security.password.kindred.osvc"
+	report[namespace] = NewReportRow(env, namespace, secret)
+	if _, found = Find(report[namespace].SealedSecretCurity, secret); found {
+		t.Errorf("Did not expect to find %s in reportRow.SealedSecretCurity: %s", secret, report[namespace].SealedSecretCurity)
+	}
+
 	// Test progress logic
 	namespace = "progress"
 	report[namespace] = NewReportRow(env, namespace, "api.service.aws.kindred.com")
@@ -126,5 +144,26 @@ func TestReportRow(t *testing.T) {
 	report[namespace].setProgress()
 	if report[namespace].isCompleted() != true || report[namespace].Progress != "completed" {
 		t.Errorf("Expected isCompleted to be true for: %+v", report[namespace])
+	}
+
+	environments := []string{"DATA", "PROD"}
+	env_sorted := []string{"PROD", "DATA"}
+	sort.Sort(byImportance(environments))
+	if !reflect.DeepEqual(environments, env_sorted) {
+		t.Errorf("Expected: " + strings.Join(environments, ",") + " to be equal to: " + strings.Join(env_sorted, ","))
+	}
+
+	environments = []string{"DATA.PT1", "DATA.PROD1", "DATA.SI1"}
+	env_sorted = []string{"DATA.PROD1", "DATA.PT1", "DATA.SI1"}
+	sort.Sort(byImportance(environments))
+	if !reflect.DeepEqual(environments, env_sorted) {
+		t.Errorf("Expected: " + strings.Join(environments, ",") + " to be equal to: " + strings.Join(env_sorted, ","))
+	}
+
+	environments = []string{"PT1", "STAGE1.US1", "DATA.PT1", "DATA.PROD1", "PROD1", "SI1", "DATA.SI1"}
+	env_sorted = []string{"PROD1", "STAGE1.US1", "PT1", "SI1", "DATA.PROD1", "DATA.PT1", "DATA.SI1"}
+	sort.Sort(byImportance(environments))
+	if !reflect.DeepEqual(environments, env_sorted) {
+		t.Errorf("Expected: " + strings.Join(environments, ",") + " to be equal to: " + strings.Join(env_sorted, ","))
 	}
 }

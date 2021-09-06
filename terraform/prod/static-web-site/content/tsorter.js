@@ -98,7 +98,11 @@ var tsorter = (function()
             }
 
             switch( sortType )
-            {   
+            {
+                case "link-numeric":
+                    return function(row){
+                        return parseFloat(that.getCell(row).firstChild.firstChild.nodeValue, 10);
+                    };
                 case "link":
                     return function(row){
                         return that.getCell(row).firstChild.firstChild.nodeValue;

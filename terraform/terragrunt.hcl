@@ -1,5 +1,5 @@
 locals {
-  project_name = "zero-config-dashboard"
+  project_name = "k8s-secrets-dashboard.mycompany.com"
 }
 
 # inputs are inherited in submodules via include find_in_parent_folders()

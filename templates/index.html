@@ -129,32 +129,37 @@
 <h1>Services on Zero Config</h1>
 <div id="wrapper">
   <div class="second tab">
-      {{range $env, $data := .}}
-      <button id="tab-{{$env}}" class="tablinks" onclick="swapTabs(event, '{{$env}}')">{{$env}}</button>
+      {{range $data := .}}
+      <button id="tab-{{$data.Env}}" class="tablinks" onclick="swapTabs(event, '{{$data.Env}}')">{{$data.Environment}}</button>
       {{end}}
   </div>
-  {{range $env, $data := .}}
-  <div id="{{$env}}" class="third tabcontent">
-    <table id="table-{{$env}}" style="width:100%">
+  {{range $data := .}}
+  <div id="{{$data.Env}}" class="third tabcontent">
+    <table id="table-{{$data.Env}}" style="width:100%">
       <thead>
         <tr>
-          <th colspan="3"></th>
-          <th colspan="5">Vault</th>
-          <th colspan="5">SealedSecrets (classification is best effort due to missing naming standard)</th>
+          <th colspan="6"></th>
+          <th colspan="6">Vault</th>
+          <th colspan="6">SealedSecrets (classification is best effort due to missing naming standard)</th>
         </tr>
         <tr class="sortable">
           <th>Service</th>
-          <th></th>
+          <th>Type</th>
+          <th>Team</th>
+          <th>Pipeline Version</th>
+          <th data-tsorter="link-numeric">GitOps config</th>
           <th>Status</th>
           <th data-tsorter="numeric">Oracle</th>
           <th data-tsorter="numeric">Solace</th>
           <th data-tsorter="numeric">InfluxDB</th>
           <th data-tsorter="numeric">MySQL</th>
           <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Curity</th>
           <th data-tsorter="numeric">Datasource</th>
           <th data-tsorter="numeric">Solace</th>
           <th data-tsorter="numeric">InfluxDB</th>
           <th data-tsorter="numeric">Couchbase</th>
+          <th data-tsorter="numeric">Curity</th>
           <th data-tsorter="numeric">Other</th>
         </tr>
       </thead>
@@ -162,52 +167,53 @@
         {{range $namespace, $row := $data.Report }}
         <tr class="{{$row.Progress}}">
           <td>{{$namespace}}</td>
-          <td><a href="https://bitbucket.kindredgroup.com/bitbucket/projects/DEPLOY/repos/{{$env}}/browse/{{$namespace}}">GitOps</a></td>
-          <td>
-            {{$row.Progress}}
-          </td>
+          <td>{{or $row.GitOps.Type "Helm"}}</td>
+          <td>{{or $row.GitOps.Project_key "unknown"}}</td>
+          <td>{{or $row.GitOps.Pipeline_version "1"}}</td>
+          <td><a href="{{$row.GitOps.GitOpsRepositoryUrl}}/browse/{{$namespace}}/config">{{$row.GitOps.CodeLines}}</a></td>
+          <td>{{$row.Progress}}</td>
           <td>{{ len $row.VaultOracle }}</td>
           <td>{{ len $row.VaultSolace }}</td>
           <td>{{ len $row.VaultInfluxDB }}</td>
           <td>{{ len $row.VaultMySQL }}</td>
-          <td class="section-end">{{ len $row.VaultCouchbase }}</td>
+          <td>{{ len $row.VaultCouchbase }}</td>
+          <td class="section-end">{{ len $row.VaultCurity }}</td>
           <td>{{ len $row.SealedSecretDatasource }}</td>
           <td>{{ len $row.SealedSecretSolace }}</td>
           <td>{{ len $row.SealedSecretInfluxDB }}</td>
           <td>{{ len $row.SealedSecretCouchbase }}</td>
+          <td>{{ len $row.SealedSecretCurity }}</td>
           <td>{{ len $row.Unknown }}</td>
         </tr>
         {{end}}
       </tbody>
     </table>
   </div>
-  <div id="top-{{$env}}" class="top tabcontent">
-    <label for="{{$env}}_progress_t">in scope:</label>
+  <div id="top-{{$data.Env}}" class="top tabcontent">
+    <label for="{{$data.Env}}_progress_t">in scope:</label>
     {{$data.CountInScope}}
-    <progress class="progressbar-t" id="{{$env}}_progress_t" max="{{$data.CountInScope}}" value="{{$data.CountInScope}}"></progress>
+    <progress class="progressbar-t" id="{{$data.Env}}_progress_t" max="{{$data.CountInScope}}" value="{{$data.CountInScope}}"></progress>
 
-    <label for="{{$env}}_progress_c">completed:</label>
+    <label for="{{$data.Env}}_progress_c">completed:</label>
     {{$data.CountCompleted}}
-    <progress class="progressbar-c" id="{{$env}}_progress_c" max="{{$data.CountInScope}}" value="{{$data.CountCompleted}}"></progress>
+    <progress class="progressbar-c" id="{{$data.Env}}_progress_c" max="{{$data.CountInScope}}" value="{{$data.CountCompleted}}"></progress>
 
-    <label for="{{$env}}_progress_i">in progress:</label>
+    <label for="{{$data.Env}}_progress_i">in progress:</label>
     {{$data.CountInProgress}}
-    <progress class="progressbar-i" id={{$env}}_progress_i" max="{{$data.CountInScope}}" value="{{$data.CountInProgress}}"></progress>
+    <progress class="progressbar-i" id={{$data.Env}}_progress_i" max="{{$data.CountInScope}}" value="{{$data.CountInProgress}}"></progress>
 
-    <label for="{{$env}}_progress_n">not started:</label>
+    <label for="{{$data.Env}}_progress_n">not started:</label>
     {{$data.CountNotStarted}}
-    <progress class="progressbar-n" id="{{$env}}_progress_n" max="{{$data.CountInScope}}" value="{{$data.CountNotStarted}}"></progress>
+    <progress class="progressbar-n" id="{{$data.Env}}_progress_n" max="{{$data.CountInScope}}" value="{{$data.CountNotStarted}}"></progress>
   </div>
   {{end}}
 </div>
   <script>
     function init(){
-      {{range $env, $data := .}}
-      doSwap(document.getElementById("tab-{{$env}}"), '{{$env}}');
-      {{end}}
+      doSwap(document.getElementById("tab-{{ (index . 0).Env }}"), '{{ (index . 0).Env }}');
       // table sort
-      {{range $env, $report := .}}
-      var sorter{{$env}} = tsorter.create('table-{{$env}}', null, {
+      {{range $data := .}}
+      var sorter{{$data.Env}} = tsorter.create('table-{{$data.Env}}', null, {
             'image-number': function(row){  
                 return parseFloat( this.getCell(row).childNodes[1].nodeValue, 10 );
             }

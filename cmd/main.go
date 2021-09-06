@@ -12,9 +12,9 @@ import (
 )
 
 func main() {
-	kubeconfigs := make(map[string]string)
-
 	type reportData struct {
+		Environment     string
+		Env             string
 		Report          report
 		CountNamespace  int
 		CountCompleted  int
@@ -22,19 +22,11 @@ func main() {
 		CountInScope    int
 		CountNotStarted int
 	}
-	reports := make(map[string]reportData)
+	reports := make([]reportData, 0)
 
-	// load kube configs
-	for _, e := range os.Environ() {
-		pair := strings.SplitN(e, "=", 2)
-		if strings.HasPrefix(pair[0], "KUBECONFIG_") {
-			kubeconfigs[strings.TrimLeft(pair[0], "KUBECONFIG_")] = pair[1]
-		}
-	}
-
-	for env, file := range kubeconfigs {
+	for _, env := range config.Environments {
 		// use the current context in kubeconfig
-		config, err := clientcmd.BuildConfigFromFlags("", file)
+		config, err := clientcmd.BuildConfigFromFlags("", config.Kubeconfigs[env])
 		if err != nil {
 			panic(err.Error())
 		}
@@ -48,7 +40,7 @@ func main() {
 		// access the API to get all secrets
 		secrets, err := clientset.CoreV1().Secrets("").List(context.TODO(), metav1.ListOptions{})
 		if err != nil {
-			panic(err.Error())
+			panic("Fetching secrets from API server: " + err.Error())
 		}
 		// Iterate over all secrets to build a report
 		report := make(report, 0)
@@ -87,9 +79,16 @@ func main() {
 			}
 		}
 		CountNotStarted = CountInScope - CountCompleted - CountInProgress
-		reports[env] = reportData{
-			Report: report, CountNamespace: CountNamespace, CountCompleted: CountCompleted,
-			CountInProgress: CountInProgress, CountInScope: CountInScope, CountNotStarted: CountNotStarted}
+		reports = append(reports, reportData{
+			Environment:     env,
+			Env:             strings.ReplaceAll(strings.ReplaceAll(env, ".", "_"), "-", "_"), // code safe, no dots or -
+			Report:          report,
+			CountNamespace:  CountNamespace,
+			CountCompleted:  CountCompleted,
+			CountInProgress: CountInProgress,
+			CountInScope:    CountInScope,
+			CountNotStarted: CountNotStarted,
+		})
 	}
 	// render report
 	tmpl, err := template.ParseFiles("./templates/index.html")
